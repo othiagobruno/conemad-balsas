@@ -28,7 +28,7 @@ enum TransactionType {
 
 model Transaction {
   id           String          @id @default(uuid()) @map("_id")
-  name         String
+  title        String
   amount       Float
   is_expense   Boolean         @default(true)
   paid         Boolean         @default(false)
@@ -36,8 +36,8 @@ model Transaction {
   user         User            @relation(fields: [user_id], references: [id])
   user_id      String
   date         DateTime
-  category     Category        @relation(fields: [category_id], references: [id])
-  category_id  String
+  category     Category?       @relation(fields: [category_id], references: [id])
+  category_id  String?
   installments Int             @default(1)
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
