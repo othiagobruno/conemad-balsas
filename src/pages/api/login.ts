@@ -14,7 +14,7 @@ export default async function handler(
       const data = req.body as PasswordLoginDto;
       const user = await passwordLoginService.execute(data);
       res.status(201).json(user);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
   }
