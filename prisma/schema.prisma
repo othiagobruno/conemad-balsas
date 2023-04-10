@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid()) @map("_id")
+  email         String         @unique
+  name          String
+  password      String
+  avatar        String?
+  premium       Boolean        @default(false)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  transactions  Transaction[]
+  notifications Notification[]
+  categories    Category[]
+}
+
+enum TransactionType {
+  FIXED
+  RECURRENT
+}
+
+model Transaction {
+  id           String          @id @default(uuid()) @map("_id")
+  name         String
+  amount       Float
+  is_expense   Boolean         @default(true)
+  paid         Boolean         @default(false)
+  type         TransactionType @default(FIXED)
+  user         User            @relation(fields: [user_id], references: [id])
+  user_id      String
+  date         DateTime
+  category     Category        @relation(fields: [category_id], references: [id])
+  category_id  String
+  installments Int             @default(1)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
+
+model Category {
+  id           String        @id @default(uuid()) @map("_id")
+  name         String
+  icon         String
+  transactions Transaction[]
+  user_id      String?
+  user         User?         @relation(fields: [user_id], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid()) @map("_id")
+  title     String
+  message   String
+  route     String?
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
