@@ -9,6 +9,26 @@ async function main() {
   await prisma.category.createMany({
     data: [
       {
+        id: "74d2e0f3-a8f3-4ef9-9c92-80a41fd297c0",
+        name: "trabalho",
+        icon: "💼",
+      },
+      {
+        id: "fca4f25f-3cc9-428f-b2a5-9d17ec16c4ee",
+        name: "investimentos",
+        icon: "💰",
+      },
+      {
+        id: "c73903f0-3563-4a9f-ab7f-548fa66ad2b6",
+        name: "emprestimos",
+        icon: "💸",
+      },
+      {
+        id: "e37b6e11-3295-4c57-bc36-0cafd26ee7e8",
+        name: "renda extra",
+        icon: "💵",
+      },
+      {
         id: "e2368b32-5c6b-401e-adac-1be64deef10b",
         name: "alimentação",
         icon: "🍔",
