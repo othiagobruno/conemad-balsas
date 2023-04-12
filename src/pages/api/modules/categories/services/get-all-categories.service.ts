@@ -1,7 +1,7 @@
-import { PrismaService } from "../../../providers/prisma/prisma.service";
+import { PrismaService } from '../../../providers/prisma/prisma.service'
 
 export class GetAllCategoriesService {
-  private prisma = PrismaService;
+  private prisma = PrismaService
 
   async execute(user_id: string) {
     const result = await this.prisma.category.findMany({
@@ -17,8 +17,8 @@ export class GetAllCategoriesService {
           },
         ],
       },
-    });
+    })
 
-    return result;
+    return result
   }
 }

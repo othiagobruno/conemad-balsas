@@ -1,19 +1,19 @@
-import { PrismaService } from "../../../providers/prisma/prisma.service";
+import { PrismaService } from '../../../providers/prisma/prisma.service'
 
 export class ProfileService {
-  private prisma = PrismaService;
+  private prisma = PrismaService
 
   async execute(id: string) {
     const user = await this.prisma.user.findFirst({
       where: { id },
-    });
+    })
 
     if (!user) {
-      throw new Error("User not found");
+      throw new Error('User not found')
     }
 
-    delete user.password;
+    delete user.password
 
-    return user;
+    return user
   }
 }

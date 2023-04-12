@@ -1,8 +1,8 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client'
 
 export class CreateCategoryDto {
-  id?: string;
-  name: string;
-  icon: string;
-  user_id?: string;
+  id?: string
+  name: string
+  icon: string
+  user_id?: string
 }
