@@ -1,5 +1,3 @@
-import { Prisma } from '@prisma/client'
-
 export class CreateCategoryDto {
   id?: string
   name: string
