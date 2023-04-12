@@ -3,15 +3,10 @@ import {
   AuthMiddleware,
   IAuthReq,
 } from "../modules/auth/middleware/auth.middleware";
-import { CreateTransactionService } from "../modules/transactions/services/create-transaction.service";
-import { GetTransactionsService } from "../modules/transactions/services/get-transaction.service";
-import { CreateTransactionDto } from "../modules/transactions/interfaces/dtos/create-transaction.dto";
 import { DeleteTransactionService } from "../modules/transactions/services/delete-transaction.service";
 import { UpdateTransactionService } from "../modules/transactions/services/update-transaction.service";
 import { UpdateTransactionDTO } from "../modules/transactions/interfaces/dtos/update-transaction.dto";
 
-const createTransactionService = new CreateTransactionService();
-const getTransactionsService = new GetTransactionsService();
 const deleteTransactionService = new DeleteTransactionService();
 const updateTransactionService = new UpdateTransactionService();
 
