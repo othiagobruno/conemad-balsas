@@ -6,6 +6,7 @@ export class CreateTransactionService {
 
   async execute(data: CreateTransactionDto) {
     const result = await this.prisma.transaction.create({ data })
+
     return result
   }
 }

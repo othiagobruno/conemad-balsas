@@ -1,6 +1,6 @@
-import { User } from "@prisma/client";
+import { User } from '@prisma/client'
 
 export interface IAuth {
-  access_token: string;
-  user: User;
+  access_token: string
+  user: User
 }

@@ -7,8 +7,8 @@ export type IAuthReq = NextApiRequest & {
   user: User
 }
 
-export const AuthMiddleware = (): Middleware => {
-  return async function (req: any, res, next) {
+export const AuthMiddleware = (): Middleware<IAuthReq> => {
+  return async function (req: IAuthReq, res, next) {
     try {
       const access_token = req.headers.authorization?.split(' ')?.[1]
 
@@ -17,7 +17,7 @@ export const AuthMiddleware = (): Middleware => {
         const decoded = jwt.decode(access_token)
 
         if (checkToken) {
-          req.user = decoded
+          req.user = decoded as User
           next()
         }
       } else {
