@@ -14,9 +14,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.1.2",
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@next/font": "^13.3.0",
     "@prisma/client": "^4.12.0",
     "autoprefixer": "10.4.14",
     "bcryptjs": "^2.4.3",
