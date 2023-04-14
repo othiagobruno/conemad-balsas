@@ -7,15 +7,22 @@ const createUserService = new CreateUserService()
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<User>
+  res: NextApiResponse<
+    | User
+    | {
+        error: string
+      }
+  >
 ) {
   if (req.method === 'POST') {
     try {
       const data = req.body as CreateUserDto
       const user = await createUserService.execute(data)
       res.status(201).json(user)
-    } catch (error: any) {
-      res.status(400).json({ error: error.message } as any)
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message })
+      }
     }
   }
 }

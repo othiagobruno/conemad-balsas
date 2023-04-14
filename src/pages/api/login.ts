@@ -7,15 +7,22 @@ const passwordLoginService = new PasswordLoginService()
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<IAuth | any>
+  res: NextApiResponse<
+    | IAuth
+    | {
+        error: string
+      }
+  >
 ) {
   if (req.method === 'POST') {
     try {
       const data = req.body as PasswordLoginDto
       const user = await passwordLoginService.execute(data)
       res.status(201).json(user)
-    } catch (error: any) {
-      res.status(400).json({ error: error.message })
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message })
+      }
     }
   }
 }

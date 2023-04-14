@@ -15,8 +15,10 @@ const handler: Middleware<IAuthReq> = async (req, res) => {
     try {
       const result = await getTransactionsService.execute(req.user.id)
       res.status(200).json(result)
-    } catch (error: any) {
-      res.status(400).json({ error: error.message })
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message })
+      }
     }
   }
 
@@ -28,8 +30,10 @@ const handler: Middleware<IAuthReq> = async (req, res) => {
         user_id: req.user.id,
       })
       res.status(201).json(result)
-    } catch (error: any) {
-      res.status(400).json({ error: error.message })
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message })
+      }
     }
   }
 }
