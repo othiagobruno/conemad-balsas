@@ -8,6 +8,9 @@ export class GetTransactionsService {
       where: {
         user_id,
       },
+      include: {
+        category: true,
+      },
     })
     return result
   }
