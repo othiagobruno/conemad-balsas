@@ -29,7 +29,7 @@ enum TransactionType {
 model Transaction {
   id           String          @id @default(uuid()) @map("_id")
   title        String
-  amount       Float
+  amount       Int
   is_expense   Boolean         @default(true)
   paid         Boolean         @default(false)
   type         TransactionType @default(FIXED)
@@ -38,9 +38,20 @@ model Transaction {
   date         DateTime
   category     Category?       @relation(fields: [category_id], references: [id])
   category_id  String?
+  exeptions    Exeptions[]
   installments Int             @default(1)
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
+}
+
+model Exeptions {
+  id             String      @id @default(uuid()) @map("_id")
+  date           DateTime
+  amount         Int
+  transaction    Transaction @relation(fields: [transaction_id], references: [id])
+  transaction_id String
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
 }
 
 model Category {

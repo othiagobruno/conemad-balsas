@@ -10,4 +10,5 @@ export class UpdateTransactionDTO {
   amount: number
   category_id: string
   user_id: string
+  current_date?: string | Date
 }

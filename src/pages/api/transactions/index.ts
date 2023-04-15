@@ -13,7 +13,8 @@ const getTransactionsService = new GetTransactionsService()
 const handler: Middleware<IAuthReq> = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      const result = await getTransactionsService.execute(req.user.id)
+      const date = new Date((req.query.date as string) || new Date().toString())
+      const result = await getTransactionsService.execute(date, req.user.id)
       res.status(200).json(result)
     } catch (error) {
       if (error instanceof Error) {

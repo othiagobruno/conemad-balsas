@@ -18,7 +18,7 @@ export default function Home() {
         <HStack maxW="1200px" flex="1" p="50px 50px 0px" alignItems="start">
           <Box flex={1} pt="100px">
             <Text fontWeight="800" fontSize="40px">
-              Depezzas: O jeito fácil de organizar suas finanças e economizar!
+              Despezzas: O jeito fácil de organizar suas finanças e economizar!
             </Text>
             <Text pt="10px">
               Simplifique sua vida financeira com Despezzas - Faça o download
@@ -41,7 +41,7 @@ export default function Home() {
         </HStack>
       </Center>
 
-      <Center mt="-120px">
+      <Center mt="-200px">
         <HStack maxW="1200px" flex="1">
           <Box flex={1.5} pl="10px">
             <Image
@@ -78,6 +78,53 @@ export default function Home() {
           <Text textAlign="center" fontWeight="800" fontSize="40px">
             Por que usar o Despezzas?
           </Text>
+
+          <HStack justify="space-between" py="50px" spacing="100px">
+            <Stack w="100px" flex={1} textAlign="center">
+              <Image
+                alt=""
+                src="/icons/check.svg"
+                height="40px"
+                objectFit={'contain'}
+              />
+              <Text pt="20px" fontWeight="800">
+                Organize suas finanças
+              </Text>
+              <Text pt="10px">
+                Tenha controle total de suas finanças pessoais e domésticas.
+              </Text>
+            </Stack>
+
+            <Stack w="100px" flex={1} textAlign="center">
+              <Image
+                alt=""
+                src="/icons/check.svg"
+                height="40px"
+                objectFit={'contain'}
+              />
+              <Text pt="20px" fontWeight="800">
+                Organize suas finanças
+              </Text>
+              <Text pt="10px">
+                Tenha controle total de suas finanças pessoais e domésticas.
+              </Text>
+            </Stack>
+
+            <Stack w="100px" flex={1} textAlign="center">
+              <Image
+                alt=""
+                src="/icons/check.svg"
+                height="40px"
+                objectFit={'contain'}
+              />
+              <Text pt="20px" fontWeight="800">
+                Organize suas finanças
+              </Text>
+              <Text pt="10px">
+                Tenha controle total de suas finanças pessoais e domésticas.
+              </Text>
+            </Stack>
+          </HStack>
         </Stack>
       </Center>
     </Box>

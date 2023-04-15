@@ -1,5 +1,5 @@
 import { GlobalStyles } from '@chakra-ui/theme-tools'
-import { Poppins } from '@next/font/google'
+import { Poppins } from 'next/font/google'
 
 export const fontLoad = Poppins({
   subsets: ['latin'],

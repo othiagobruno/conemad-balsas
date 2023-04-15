@@ -5,7 +5,12 @@ export class CreateTransactionService {
   private prisma = PrismaService
 
   async execute(data: CreateTransactionDto) {
-    const result = await this.prisma.transaction.create({ data })
+    const result = await this.prisma.transaction.create({
+      data,
+      include: {
+        category: true,
+      },
+    })
 
     return result
   }
