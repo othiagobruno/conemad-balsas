@@ -8,17 +8,19 @@ datasource db {
 }
 
 model User {
-  id            String         @id @default(uuid()) @map("_id")
-  email         String         @unique
-  name          String
-  password      String
-  avatar        String?
-  premium       Boolean        @default(false)
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  transactions  Transaction[]
-  notifications Notification[]
-  categories    Category[]
+  id                String         @id @default(uuid()) @map("_id")
+  email             String         @unique
+  name              String
+  password          String
+  avatar            String?
+  premium           Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  auth_provider_uid String?
+  auth_provider     String?
+  transactions      Transaction[]
+  notifications     Notification[]
+  categories        Category[]
 }
 
 enum TransactionType {
