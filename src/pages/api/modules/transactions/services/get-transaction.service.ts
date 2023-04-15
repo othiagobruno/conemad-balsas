@@ -13,7 +13,14 @@ export class GetTransactionsService {
   async execute(date: Date, userId: string) {
     const transactions = await this.prisma.transaction.findMany({
       where: { user_id: userId },
-      include: { category: true, exeptions: true },
+      include: {
+        category: true,
+        exeptions: {
+          orderBy: {
+            id: 'desc',
+          },
+        },
+      },
     })
 
     const groupedByMonth = transactions
