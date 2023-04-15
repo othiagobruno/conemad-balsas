@@ -17,7 +17,7 @@ export class GetTransactionsService {
         category: true,
         exeptions: {
           orderBy: {
-            id: 'desc',
+            createdAt: 'desc',
           },
         },
       },
