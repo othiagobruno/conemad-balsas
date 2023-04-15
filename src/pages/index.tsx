@@ -7,31 +7,65 @@ import {
   Text,
   Image,
   Stack,
+  keyframes,
 } from '@chakra-ui/react'
+
+import { IoLogoGooglePlaystore, IoLogoApple } from 'react-icons/io5'
+import Typewriter from 'typewriter-effect'
+
+const animationKeyframes = keyframes`
+  0% { transform: scale(0.98)  }
+  50% { transform: scale(1)  }
+  100% { transform: scale(0.98)  }
+`
+
+const animation = `${animationKeyframes} 3s ease-in-out infinite`
 
 export default function Home() {
   return (
     <Box>
-      <HeaderComponent />
+      <HeaderComponent title="Despezzas" />
 
       <Center>
         <HStack maxW="1200px" flex="1" p="50px 50px 0px" alignItems="start">
           <Box flex={1} pt="100px">
-            <Text fontWeight="800" fontSize="40px">
-              Despezzas: O jeito fácil de organizar suas finanças e economizar!
-            </Text>
+            <Box fontWeight="800" fontSize="40px">
+              <Text bg="primary.500" as="span" color="white" px="10px">
+                Despezzas
+              </Text>
+              <Typewriter
+                options={{
+                  strings: [
+                    ' O jeito fácil de organizar suas finanças e economizar!',
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  delay: 45,
+                }}
+              />
+            </Box>
             <Text pt="10px">
               Simplifique sua vida financeira com Despezzas - Faça o download
               agora e comece a economizar!
             </Text>
 
             <HStack pt="40px">
-              <Button px="50px">baixe agora</Button>
+              <Button
+                leftIcon={<IoLogoGooglePlaystore size={20} />}
+                bg="black"
+                px="50px"
+              >
+                PlayStore
+              </Button>
+              <Button leftIcon={<IoLogoApple size={20} />} bg="black" px="50px">
+                Apple Store
+              </Button>
             </HStack>
           </Box>
 
           <Box flex={1} pl="80px" mr="-80px !important">
             <Image
+              animation={animation}
               alt=""
               src="/images/mockup-02.png"
               // height="800px"
@@ -45,6 +79,7 @@ export default function Home() {
         <HStack maxW="1200px" flex="1">
           <Box flex={1.5} pl="10px">
             <Image
+              animation={animation}
               alt=""
               src="/images/mockup-03.png"
               height="900px"

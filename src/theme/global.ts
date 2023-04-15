@@ -20,5 +20,8 @@ export const global: GlobalStyles = {
       bg: '#f6faff',
       ...fontLoad.style,
     },
+    '.Typewriter': {
+      display: 'contents',
+    },
   },
 }

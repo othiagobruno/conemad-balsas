@@ -5,10 +5,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Despezzas</title>
-        <meta
-          name="description"
-          content="Depezzas: O jeito fácil de organizar suas finanças e economizar!"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
