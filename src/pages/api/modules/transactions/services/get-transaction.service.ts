@@ -13,6 +13,9 @@ export class GetTransactionsService {
   async execute(date: Date, userId: string) {
     const transactions = await this.prisma.transaction.findMany({
       where: { user_id: userId },
+      orderBy: {
+        createdAt: 'desc',
+      },
       include: {
         category: true,
         exeptions: {
