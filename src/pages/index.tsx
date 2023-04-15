@@ -1,3 +1,4 @@
+import { FooterComponent } from '@/components/Footer'
 import HeaderComponent from '@/components/Header'
 import {
   Box,
@@ -8,6 +9,7 @@ import {
   Image,
   Stack,
   keyframes,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 
 import { IoLogoGooglePlaystore, IoLogoApple } from 'react-icons/io5'
@@ -22,17 +24,30 @@ const animationKeyframes = keyframes`
 const animation = `${animationKeyframes} 3s ease-in-out infinite`
 
 export default function Home() {
+  const isMobile = useBreakpointValue({ base: true, md: false })
+
+  const image = ['/images/mockup-04.png', '/images/mockup-02.png']
+
+  const imageByDevice = isMobile ? image[0] : image[1]
+
   return (
     <Box>
       <HeaderComponent title="Despezzas" />
 
       <Center>
-        <HStack maxW="1200px" flex="1" p="50px 50px 0px" alignItems="start">
-          <Box flex={1} pt="100px">
-            <Box fontWeight="800" fontSize="40px">
+        <Stack
+          direction={['column-reverse', 'row']}
+          maxW="1200px"
+          flex="1"
+          p={['20px', '50px 50px 0px']}
+          alignItems="start"
+        >
+          <Box flex={1} pt={[0, '100px']}>
+            <Box fontWeight="800" fontSize="40px" minH={['300px', '200px']}>
               <Text bg="primary.500" as="span" color="white" px="10px">
                 Despezzas
               </Text>
+
               <Typewriter
                 options={{
                   strings: [
@@ -49,34 +64,43 @@ export default function Home() {
               agora e comece a economizar!
             </Text>
 
-            <HStack pt="40px">
+            <Stack pt="40px" direction={['column', 'row']}>
               <Button
                 leftIcon={<IoLogoGooglePlaystore size={20} />}
                 bg="black"
-                px="50px"
+                w={['100%', 'auto']}
               >
                 PlayStore
               </Button>
-              <Button leftIcon={<IoLogoApple size={20} />} bg="black" px="50px">
+              <Button
+                w={['100%', 'auto']}
+                leftIcon={<IoLogoApple size={20} />}
+                bg="black"
+              >
                 Apple Store
               </Button>
-            </HStack>
+            </Stack>
           </Box>
 
-          <Box flex={1} pl="80px" mr="-80px !important">
+          <Box flex={1} pl={[0, '80px']} mr={[0, '-80px !important']}>
             <Image
               animation={animation}
               alt=""
-              src="/images/mockup-02.png"
-              // height="800px"
+              src={imageByDevice}
               objectFit={'contain'}
             />
           </Box>
-        </HStack>
+        </Stack>
       </Center>
 
-      <Center mt="-200px">
-        <HStack maxW="1200px" flex="1">
+      <Center mt={['-250px', '-180px']}>
+        <Stack
+          align="center"
+          direction={['column', 'row']}
+          maxW="1200px"
+          flex="1"
+          p={['20px', '0px']}
+        >
           <Box flex={1.5} pl="10px">
             <Image
               animation={animation}
@@ -84,11 +108,16 @@ export default function Home() {
               src="/images/mockup-03.png"
               height="900px"
               objectFit={'contain'}
-              ml="-80px"
+              ml={[0, '-80px']}
             />
           </Box>
 
-          <Box flex={1} pt="0">
+          <Box
+            textAlign={['center', 'start']}
+            flex={1}
+            pt="0"
+            mt={['-300px !important', '50px !important']}
+          >
             <Text fontWeight="800" fontSize="40px">
               Tenha Notícias do Mundo Financeiro
             </Text>
@@ -101,21 +130,27 @@ export default function Home() {
               gerenciar riscos e aproveitar oportunidades financeiras.
             </Text>
 
-            <HStack pt="40px" pb="120px">
+            <HStack display={['none', 'block']} pt="40px" pb="120px">
               <Button px="50px">baixe agora</Button>
             </HStack>
           </Box>
-        </HStack>
+        </Stack>
       </Center>
 
-      <Center mt="-80px">
+      <Center mt={[20, '-80px']}>
         <Stack maxW="1200px" flex="1">
           <Text textAlign="center" fontWeight="800" fontSize="40px">
             Por que usar o Despezzas?
           </Text>
 
-          <HStack justify="space-between" py="50px" spacing="100px">
-            <Stack w="100px" flex={1} textAlign="center">
+          <Stack
+            direction={['column', 'row']}
+            justify="space-between"
+            py="50px"
+            spacing={['20px', '100px']}
+            px={['20px', '0px']}
+          >
+            <Stack w={['auto', '100px']} flex={1} textAlign="center">
               <Image
                 alt=""
                 src="/icons/check.svg"
@@ -123,14 +158,16 @@ export default function Home() {
                 objectFit={'contain'}
               />
               <Text pt="20px" fontWeight="800">
-                Organize suas finanças
+                Total controle de suas finanças
               </Text>
               <Text pt="10px">
                 Tenha controle total de suas finanças pessoais e domésticas.
+                Relatorios detalhados e gráficos para você entender melhor seus
+                gastos.
               </Text>
             </Stack>
 
-            <Stack w="100px" flex={1} textAlign="center">
+            <Stack w={['auto', '100px']} flex={1} textAlign="center">
               <Image
                 alt=""
                 src="/icons/check.svg"
@@ -138,14 +175,15 @@ export default function Home() {
                 objectFit={'contain'}
               />
               <Text pt="20px" fontWeight="800">
-                Organize suas finanças
+                Priorizamos sua segurança e privacidade
               </Text>
               <Text pt="10px">
-                Tenha controle total de suas finanças pessoais e domésticas.
+                Sua privacidade é muito importante para nós. Nós nunca
+                compartilhamos seus dados com terceiros.
               </Text>
             </Stack>
 
-            <Stack w="100px" flex={1} textAlign="center">
+            <Stack w={['auto', '100px']} flex={1} textAlign="center">
               <Image
                 alt=""
                 src="/icons/check.svg"
@@ -153,15 +191,18 @@ export default function Home() {
                 objectFit={'contain'}
               />
               <Text pt="20px" fontWeight="800">
-                Organize suas finanças
+                Ajudamos você a alcançar sua independência financeira
               </Text>
               <Text pt="10px">
-                Tenha controle total de suas finanças pessoais e domésticas.
+                Você pode acompanhar seus gastos e economizar dinheiro para
+                alcançar sua independência financeira.
               </Text>
             </Stack>
-          </HStack>
+          </Stack>
         </Stack>
       </Center>
+
+      <FooterComponent />
     </Box>
   )
 }

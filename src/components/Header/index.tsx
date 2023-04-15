@@ -13,7 +13,12 @@ const HeaderComponent: React.FC<Props> = ({ title }) => {
 
   return (
     <Center>
-      <HStack flex="1" justify="space-between" maxW="1200px" p="20px">
+      <HStack
+        flex="1"
+        justify={['center', 'space-between']}
+        maxW="1200px"
+        p="20px"
+      >
         <Image
           onClick={() => push('/')}
           src="logo.svg"
@@ -22,7 +27,7 @@ const HeaderComponent: React.FC<Props> = ({ title }) => {
           alt={''}
         />
 
-        <HStack spacing="0px">
+        <HStack spacing="0px" display={['none', 'block']}>
           <Button variant="text" onClick={() => push('/')}>
             recursos
           </Button>
