@@ -9,12 +9,13 @@ import {
 } from 'firebase/auth'
 
 const app = initializeApp({
-  apiKey: 'AIzaSyCkAtq6G-2wNNcyguA7TNH7MG9yu_pZuHM',
-  appId: '1:1013324345184:android:cbe4dfcc23cb6789e8b805',
-  messagingSenderId: '1013324345184',
-  projectId: 'spalhe-app-prod',
-  storageBucket: 'spalhe-app-prod.appspot.com',
-  authDomain: 'spalhe-app-prod.firebaseapp.com',
+  apiKey: 'AIzaSyDXyNz_StQMyTM-r1kyu69rZnFKfdUHTSI',
+  appId: '1:823964210942:web:f7512b586affbf3f7577af',
+  messagingSenderId: '823964210942',
+  projectId: 'despezzas',
+  authDomain: 'despezzas.firebaseapp.com',
+  storageBucket: 'despezzas.appspot.com',
+  measurementId: 'G-FQHQK3HGYQ',
 })
 
 const auth = getAuth(app)
