@@ -9,7 +9,6 @@ import {
   Image,
   Stack,
   keyframes,
-  useBreakpointValue,
 } from '@chakra-ui/react'
 
 import { IoLogoGooglePlaystore, IoLogoApple } from 'react-icons/io5'
@@ -24,11 +23,10 @@ const animationKeyframes = keyframes`
 const animation = `${animationKeyframes} 3s ease-in-out infinite`
 
 export default function Home() {
-  const isMobile = useBreakpointValue({ base: true, md: false })
-
-  const image = ['/images/mockup-04.png', '/images/mockup-02.png']
-
-  const imageByDevice = isMobile ? image[0] : image[1]
+  const imageCard = {
+    mobile: '/images/mockup-04.png',
+    web: '/images/mockup-02.png',
+  }
 
   return (
     <Box>
@@ -42,7 +40,7 @@ export default function Home() {
           p={['20px', '50px 50px 0px']}
           alignItems="start"
         >
-          <Box flex={1} pt={[0, '100px']}>
+          <Box flex={1} pt={[0, '100px']} zIndex={100}>
             <Box fontWeight="800" fontSize="40px" minH={['300px', '200px']}>
               <Text bg="primary.500" as="span" color="white" px="10px">
                 Despezzas
@@ -82,18 +80,32 @@ export default function Home() {
             </Stack>
           </Box>
 
-          <Box flex={1} pl={[0, '80px']} mr={[0, '-80px !important']}>
+          <Box
+            display={['none', 'block']}
+            flex={1}
+            pl={[0, '80px']}
+            mr={[0, '-80px !important']}
+          >
             <Image
               animation={animation}
               alt=""
-              src={imageByDevice}
+              src={imageCard.web}
+              objectFit={'contain'}
+            />
+          </Box>
+
+          <Box display={['block', 'none']} flex={1} mb="-50px !important">
+            <Image
+              animation={animation}
+              alt=""
+              src={imageCard.mobile}
               objectFit={'contain'}
             />
           </Box>
         </Stack>
       </Center>
 
-      <Center mt={['-250px', '-180px']}>
+      <Center mt={['-170px', '-180px']}>
         <Stack
           align="center"
           direction={['column', 'row']}
