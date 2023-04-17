@@ -14,6 +14,7 @@ model User {
   password          String
   avatar            String?
   premium           Boolean        @default(false)
+  free_trial_ends   DateTime?
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
   auth_provider_uid String?
