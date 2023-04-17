@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import HeaderComponent from '@/components/Header'
 import { Box, Center, Stack, Text } from '@chakra-ui/react'
 
