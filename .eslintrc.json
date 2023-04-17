@@ -27,6 +27,9 @@
         "react/react-in-jsx-scope": "off",
         "spaced-comment": "error",
         "quotes": ["error", "single"],
-        "no-duplicate-imports": "error"
+        "no-duplicate-imports": "error",
+        "prefer-rest-params": "off",
+        "react/no-unescaped-entities": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

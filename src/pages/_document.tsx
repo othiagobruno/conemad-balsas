@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default function Document() {
   return (
@@ -31,6 +32,16 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FQHQK3HGYQ"
+        ></script>
+        <Script>
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {(window as any).dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'G-FQHQK3HGYQ');
+        </Script>
       </body>
     </Html>
   )
