@@ -18,6 +18,10 @@ export default function Document() {
         <meta property="og:title" content="Despezzas" />
         <meta property="og:description" content="Despezzas" />
         <meta property="og:image" content="https://despezzas.com/og.png" />
+        <meta
+          name="google-site-verification"
+          content="Dz8GndEFIFnKmwi0ezgX5w8s7-ZcbcjPTs7B9SwT5fs"
+        />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
