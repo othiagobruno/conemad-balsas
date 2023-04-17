@@ -7,6 +7,12 @@ export class UpdateTransactionService {
   async execute(id: string, data: UpdateTransactionDTO) {
     const isRecurrent = data.type === 'RECURRENT'
 
+    if (isRecurrent && !data.current_date) {
+      await this.prisma.exeptions.deleteMany({
+        where: { transaction_id: id },
+      })
+    }
+
     const transaction = await this.prisma.transaction.update({
       where: { id },
       data:
