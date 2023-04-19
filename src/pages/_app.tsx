@@ -4,14 +4,16 @@ import { CacheProvider } from '@chakra-ui/next-js'
 import { themeApp } from '@/theme'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
 import GoogleTagManager from '@/shared/GoogleTagManager'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <CacheProvider>
       <ChakraProvider theme={themeApp}>
-        <GoogleTagManager />
-        <GoogleAnalytics trackPageViews strategy="lazyOnload" />
         <Component {...pageProps} />
+        <GoogleAnalytics trackPageViews strategy="lazyOnload" />
+        <GoogleTagManager />
+        <Analytics />
       </ChakraProvider>
     </CacheProvider>
   )
