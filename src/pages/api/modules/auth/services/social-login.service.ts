@@ -35,6 +35,8 @@ export class SocialLoginService {
       { expiresIn: '1y' }
     )
 
+    userExists.premium = true
+
     return {
       access_token,
       user: userExists,

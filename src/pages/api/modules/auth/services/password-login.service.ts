@@ -29,6 +29,8 @@ export class PasswordLoginService {
       { expiresIn: '1y' }
     )
 
+    user.premium = true
+
     return {
       access_token,
       user,

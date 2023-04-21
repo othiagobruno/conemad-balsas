@@ -14,6 +14,8 @@ export class ProfileService {
 
     delete user.password
 
+    user.premium = true
+
     return user
   }
 }
