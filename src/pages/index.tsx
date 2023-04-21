@@ -64,6 +64,11 @@ export default function Home() {
 
             <Stack pt="40px" direction={['column', 'row']}>
               <Button
+                onClick={() => {
+                  window.open(
+                    'https://play.google.com/store/apps/details?id=com.despezzas'
+                  )
+                }}
                 leftIcon={<IoLogoGooglePlaystore size={20} />}
                 bg="black"
                 w={['100%', 'auto']}
@@ -71,6 +76,11 @@ export default function Home() {
                 PlayStore
               </Button>
               <Button
+                onClick={() => {
+                  window.open(
+                    'https://play.google.com/store/apps/details?id=com.despezzas'
+                  )
+                }}
                 w={['100%', 'auto']}
                 leftIcon={<IoLogoApple size={20} />}
                 bg="black"
