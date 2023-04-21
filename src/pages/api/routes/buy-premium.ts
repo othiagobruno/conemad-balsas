@@ -2,8 +2,8 @@ import { use, Middleware } from 'next-api-route-middleware'
 import {
   AuthMiddleware,
   IAuthReq,
-} from './modules/auth/middleware/auth.middleware'
-import { BuyPremiumService } from './modules/user/services/buy-premium.service'
+} from '../modules/auth/middleware/auth.middleware'
+import { BuyPremiumService } from '../modules/user/services/buy-premium.service'
 
 const buyPremiumService = new BuyPremiumService()
 

@@ -2,10 +2,10 @@ import { use, Middleware } from 'next-api-route-middleware'
 import {
   AuthMiddleware,
   IAuthReq,
-} from '../modules/auth/middleware/auth.middleware'
-import { CreateTransactionService } from '../modules/transactions/services/create-transaction.service'
-import { GetTransactionsService } from '../modules/transactions/services/get-transaction.service'
-import { CreateTransactionDto } from '../modules/transactions/interfaces/dtos/create-transaction.dto'
+} from '../../modules/auth/middleware/auth.middleware'
+import { CreateTransactionService } from '../../modules/transactions/services/create-transaction.service'
+import { GetTransactionsService } from '../../modules/transactions/services/get-transaction.service'
+import { CreateTransactionDto } from '../../modules/transactions/interfaces/dtos/create-transaction.dto'
 
 const createTransactionService = new CreateTransactionService()
 const getTransactionsService = new GetTransactionsService()

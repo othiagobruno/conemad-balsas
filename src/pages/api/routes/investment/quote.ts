@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { BrapiService } from '../providers/brapi/brapi.service'
+import { BrapiService } from '../../providers/brapi/brapi.service'
 
 const brapiService = new BrapiService()
 

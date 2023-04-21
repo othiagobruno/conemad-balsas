@@ -1,10 +1,10 @@
 import { use, Middleware } from 'next-api-route-middleware'
-import { ProfileService } from './modules/user/services/get-profile.service'
+import { UpdateUserService } from '../modules/user/services/update-user.service'
+import { ProfileService } from '../modules/user/services/get-profile.service'
 import {
   AuthMiddleware,
   IAuthReq,
-} from './modules/auth/middleware/auth.middleware'
-import { UpdateUserService } from './modules/user/services/update-user.service'
+} from '../modules/auth/middleware/auth.middleware'
 
 const profileService = new ProfileService()
 const updateProfileService = new UpdateUserService()

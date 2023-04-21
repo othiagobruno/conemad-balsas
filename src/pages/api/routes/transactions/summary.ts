@@ -2,8 +2,8 @@ import { use, Middleware } from 'next-api-route-middleware'
 import {
   AuthMiddleware,
   IAuthReq,
-} from '../modules/auth/middleware/auth.middleware'
-import { SummaryService } from '../modules/transactions/services/summary.service'
+} from '../../modules/auth/middleware/auth.middleware'
+import { SummaryService } from '../../modules/transactions/services/summary.service'
 
 const summaryService = new SummaryService()
 

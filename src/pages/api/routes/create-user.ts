@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { CreateUserDto } from './modules/user/interfaces/dtos/create-user.dto'
 import { User } from '@prisma/client'
-import { CreateUserService } from './modules/user/services/create-user.service'
+import { CreateUserService } from '../modules/user/services/create-user.service'
+import { CreateUserDto } from '../modules/user/interfaces/dtos/create-user.dto'
 
 const createUserService = new CreateUserService()
 

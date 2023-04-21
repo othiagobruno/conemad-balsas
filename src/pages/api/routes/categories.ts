@@ -1,11 +1,11 @@
 import { use, Middleware } from 'next-api-route-middleware'
+import { GetAllCategoriesService } from '../modules/categories/services/get-all-categories.service'
+import { CreateCategoryService } from '../modules/categories/services/create-category.service'
 import {
   AuthMiddleware,
   IAuthReq,
-} from './modules/auth/middleware/auth.middleware'
-import { GetAllCategoriesService } from './modules/categories/services/get-all-categories.service'
-import { CreateCategoryService } from './modules/categories/services/create-category.service'
-import { CreateCategoryDto } from './modules/categories/interfaces/dtos/create-category.dto'
+} from '../modules/auth/middleware/auth.middleware'
+import { CreateCategoryDto } from '../modules/categories/interfaces/dtos/create-category.dto'
 
 const getAllCategoriesService = new GetAllCategoriesService()
 const createCategoryService = new CreateCategoryService()
