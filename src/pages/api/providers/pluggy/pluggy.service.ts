@@ -11,7 +11,17 @@ export class PluggyService {
   }
 
   listAccounts(itemId: string) {
-    return this.pluggy.fetchAllTransactions(itemId)
+    return this.pluggy.fetchAccounts(itemId)
+  }
+
+  getAccount(id: string) {
+    return this.pluggy.fetchAccount(id)
+  }
+
+  listTransactions(itemId: string) {
+    return this.pluggy.fetchTransactions(itemId, {
+      pageSize: 500,
+    })
   }
 
   async listBanks(type: BankType | BankType[] = 'PERSONAL_BANK') {

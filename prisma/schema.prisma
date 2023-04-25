@@ -30,21 +30,23 @@ enum TransactionType {
 }
 
 model Transaction {
-  id           String          @id @default(uuid()) @map("_id")
-  title        String
-  amount       Int
-  is_expense   Boolean         @default(true)
-  paid         Boolean         @default(false)
-  type         TransactionType @default(FIXED)
-  user         User            @relation(fields: [user_id], references: [id])
-  user_id      String
-  date         DateTime
-  category     Category?       @relation(fields: [category_id], references: [id])
-  category_id  String?
-  exeptions    Exeptions[]
-  installments Int             @default(1)
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
+  id             String          @id @default(uuid()) @map("_id")
+  title          String
+  amount         Int
+  external_id    String?
+  external_token String?
+  is_expense     Boolean         @default(true)
+  paid           Boolean         @default(false)
+  type           TransactionType @default(FIXED)
+  user           User            @relation(fields: [user_id], references: [id])
+  user_id        String
+  date           DateTime
+  category       Category?       @relation(fields: [category_id], references: [id])
+  category_id    String?
+  exeptions      Exeptions[]
+  installments   Int             @default(1)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 }
 
 model Exeptions {

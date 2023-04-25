@@ -6,6 +6,7 @@ import {
 import { CreateTransactionService } from '../../modules/transactions/services/create-transaction.service'
 import { GetTransactionsService } from '../../modules/transactions/services/get-transaction.service'
 import { CreateTransactionDto } from '../../modules/transactions/interfaces/dtos/create-transaction.dto'
+import { isDate } from 'date-fns'
 
 const createTransactionService = new CreateTransactionService()
 const getTransactionsService = new GetTransactionsService()
@@ -14,7 +15,13 @@ const handler: Middleware<IAuthReq> = async (req, res) => {
   if (req.method === 'GET') {
     try {
       const date = new Date((req.query.date as string) || new Date().toString())
+
+      console.log(date, isDate(date))
+
       const result = await getTransactionsService.execute(date, req.user.id)
+
+      console.log(result)
+
       res.status(200).json(result)
     } catch (error) {
       if (error instanceof Error) {

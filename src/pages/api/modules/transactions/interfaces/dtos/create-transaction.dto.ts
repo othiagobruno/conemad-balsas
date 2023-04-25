@@ -10,4 +10,6 @@ export class CreateTransactionDto {
   amount: number
   category_id: string
   user_id: string
+  external_id?: string
+  external_token?: string
 }
