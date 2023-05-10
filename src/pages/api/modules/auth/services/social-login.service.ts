@@ -1,8 +1,8 @@
 import {
   FirebaseService,
   LoginCredentials,
-} from '@/pages/api/providers/firebase/firebase.service'
-import { PrismaService } from '@/pages/api/providers/prisma/prisma.service'
+} from '../../../providers/firebase/firebase.service'
+import { PrismaService } from '../../../providers/prisma/prisma.service'
 import jwt from 'jsonwebtoken'
 
 export class SocialLoginService {
@@ -31,7 +31,7 @@ export class SocialLoginService {
 
     const access_token = jwt.sign(
       { id: userExists.id, name: userExists.name },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET as string,
       { expiresIn: '1y' }
     )
 

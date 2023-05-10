@@ -21,11 +21,11 @@ export class PasswordLoginService {
       throw new Error('Invalid password')
     }
 
-    delete user.password
+    user.password = undefined as any as string
 
     const access_token = jwt.sign(
       { id: user.id, name: user.name },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET as string,
       { expiresIn: '1y' }
     )
 

@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id                String         @id @default(uuid()) @map("_id")
+  id                String         @id @default(uuid())
   email             String         @unique
   name              String
   password          String
@@ -22,6 +22,7 @@ model User {
   transactions      Transaction[]
   notifications     Notification[]
   categories        Category[]
+  accounts          Account[]
 }
 
 enum TransactionType {
@@ -29,8 +30,21 @@ enum TransactionType {
   RECURRENT
 }
 
+model Account {
+  id           String        @id @default(uuid())
+  name         String
+  logo         String
+  external_id  String
+  balance      Int?          @default(0)
+  user         User          @relation(fields: [user_id], references: [id])
+  user_id      String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+}
+
 model Transaction {
-  id             String          @id @default(uuid()) @map("_id")
+  id             String          @id @default(uuid())
   title          String
   amount         Int
   external_id    String?
@@ -42,7 +56,9 @@ model Transaction {
   user_id        String
   date           DateTime
   category       Category?       @relation(fields: [category_id], references: [id])
+  account        Account?        @relation(fields: [account_id], references: [id])
   category_id    String?
+  account_id     String?
   exeptions      Exeptions[]
   installments   Int             @default(1)
   createdAt      DateTime        @default(now())
@@ -50,7 +66,7 @@ model Transaction {
 }
 
 model Exeptions {
-  id             String      @id @default(uuid()) @map("_id")
+  id             String      @id @default(uuid())
   date           DateTime
   amount         Int
   transaction    Transaction @relation(fields: [transaction_id], references: [id])
@@ -60,7 +76,7 @@ model Exeptions {
 }
 
 model Category {
-  id           String        @id @default(uuid()) @map("_id")
+  id           String        @id @default(uuid())
   name         String
   icon         String
   transactions Transaction[]
@@ -71,7 +87,7 @@ model Category {
 }
 
 model Notification {
-  id        String   @id @default(uuid()) @map("_id")
+  id        String   @id @default(uuid())
   title     String
   message   String
   route     String?

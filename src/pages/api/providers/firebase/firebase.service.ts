@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { initializeApp } from 'firebase/app'
 import {
@@ -28,7 +29,7 @@ export interface LoginCredentials {
 
 export class FirebaseService {
   async signInWithCredential(credential: LoginCredentials) {
-    let provider: AuthCredential
+    let provider: AuthCredential | null = null
 
     if (credential.providerId === 'google.com') {
       provider = GoogleAuthProvider.credential(
@@ -41,7 +42,7 @@ export class FirebaseService {
       provider = OAuthCredential.fromJSON(credential)
     }
 
-    const result = await signInWithCredential(auth, provider)
+    const result = await signInWithCredential(auth, provider!)
 
     const user = result?.user?.displayName
       ? result.user
