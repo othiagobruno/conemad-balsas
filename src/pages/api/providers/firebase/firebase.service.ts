@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { initializeApp } from 'firebase/app'
 import {
@@ -10,26 +9,19 @@ import {
 } from 'firebase/auth'
 
 const app = initializeApp({
-  apiKey: 'AIzaSyDXyNz_StQMyTM-r1kyu69rZnFKfdUHTSI',
-  appId: '1:823964210942:web:f7512b586affbf3f7577af',
-  messagingSenderId: '823964210942',
-  projectId: 'despezzas',
-  authDomain: 'despezzas.firebaseapp.com',
-  storageBucket: 'despezzas.appspot.com',
-  measurementId: 'G-FQHQK3HGYQ',
+  apiKey: 'AIzaSyCkAtq6G-2wNNcyguA7TNH7MG9yu_pZuHM',
+  appId: '1:1013324345184:android:cbe4dfcc23cb6789e8b805',
+  messagingSenderId: '1013324345184',
+  projectId: 'spalhe-app-prod',
+  storageBucket: 'spalhe-app-prod.appspot.com',
+  authDomain: 'spalhe-app-prod.firebaseapp.com',
 })
 
 const auth = getAuth(app)
 
-export interface LoginCredentials {
-  providerId: string
-  idToken: string
-  accessToken: string
-}
-
 export class FirebaseService {
-  async signInWithCredential(credential: LoginCredentials) {
-    let provider: AuthCredential | null = null
+  async signInWithCredential(credential: any) {
+    let provider: AuthCredential
 
     if (credential.providerId === 'google.com') {
       provider = GoogleAuthProvider.credential(
@@ -42,7 +34,7 @@ export class FirebaseService {
       provider = OAuthCredential.fromJSON(credential)
     }
 
-    const result = await signInWithCredential(auth, provider!)
+    const result = await signInWithCredential(auth, provider)
 
     const user = result?.user?.displayName
       ? result.user
