@@ -7,92 +7,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id                String         @id @default(uuid())
-  email             String         @unique
-  name              String
-  password          String
-  avatar            String?
-  premium           Boolean        @default(false)
-  free_trial_ends   DateTime?
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
-  auth_provider_uid String?
-  auth_provider     String?
-  transactions      Transaction[]
-  notifications     Notification[]
-  categories        Category[]
-  accounts          Account[]
-}
+model Subscriptions {
+  id              String  @id @default(uuid())
+  name            String
+  telefone        String?
+  cpf             String
+  rua             String?
+  numero          String?
+  bairro          String?
+  cidade          String
+  estado          String
+  cep             String
+  cargo           String?
+  cargoPretendido String
+  pixCode         String?
+  pago            Boolean @default(false)
 
-enum TransactionType {
-  FIXED
-  RECURRENT
-}
-
-model Account {
-  id           String        @id @default(uuid())
-  name         String
-  logo         String
-  external_id  String
-  balance      Int?          @default(0)
-  user         User          @relation(fields: [user_id], references: [id])
-  user_id      String
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  transactions Transaction[]
-}
-
-model Transaction {
-  id             String          @id @default(uuid())
-  title          String
-  amount         Int
-  external_id    String?
-  external_token String?
-  is_expense     Boolean         @default(true)
-  paid           Boolean         @default(false)
-  type           TransactionType @default(FIXED)
-  user           User            @relation(fields: [user_id], references: [id])
-  user_id        String
-  date           DateTime
-  category       Category?       @relation(fields: [category_id], references: [id])
-  account        Account?        @relation(fields: [account_id], references: [id])
-  category_id    String?
-  account_id     String?
-  exeptions      Exeptions[]
-  installments   Int             @default(1)
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-}
-
-model Exeptions {
-  id             String      @id @default(uuid())
-  date           DateTime
-  amount         Int
-  transaction    Transaction @relation(fields: [transaction_id], references: [id])
-  transaction_id String
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
-}
-
-model Category {
-  id           String        @id @default(uuid())
-  name         String
-  icon         String
-  transactions Transaction[]
-  user_id      String?
-  user         User?         @relation(fields: [user_id], references: [id])
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-}
-
-model Notification {
-  id        String   @id @default(uuid())
-  title     String
-  message   String
-  route     String?
-  user      User     @relation(fields: [user_id], references: [id])
-  user_id   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -1,6 +1,5 @@
-import { Button, Center, HStack } from '@chakra-ui/react'
+import { Button, Center, HStack, Image } from '@chakra-ui/react'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -12,40 +11,32 @@ const HeaderComponent: React.FC<Props> = ({ title }) => {
   const { push } = useRouter()
 
   return (
-    <Center>
+    <Center w="full">
       <HStack
-        flex="1"
-        justify={['center', 'space-between']}
-        maxW="1200px"
-        p="20px"
+        w="full"
+        py="16px"
+        px={[2, '150px']}
+        bg="white"
+        shadow="md"
+        justify="space-between"
       >
-        <Image
-          onClick={() => push('/')}
-          src="logo.svg"
-          width={120}
-          height={60}
-          alt={''}
-        />
+        <Image src="/logo.svg" w={['100px', '130px']} />
 
-        <HStack spacing="0px" display={['none', 'block']}>
-          <Button variant="text" onClick={() => push('/')}>
-            recursos
+        <HStack>
+          <Button display={['none', 'block']} variant="text">
+            Contato
           </Button>
-          <Button variant="text" onClick={() => push('/plans')}>
-            planos
+          <Button borderRadius="40px" p="10px 40px">
+            Inscrição
           </Button>
-          <Button onClick={() => push('/terms')} variant="text">
-            termos de uso
-          </Button>
-          <Button onClick={() => push('/')}>baixe agora</Button>
         </HStack>
       </HStack>
 
       <Head>
-        <title>{`${title} | Despezzas: O jeito fácil de organizar suas finanças e economizar!`}</title>
+        <title>{`${title} | AD Madureira Regional de Balsas!`}</title>
         <meta
           name="description"
-          content={`${title} | Depezzas: O jeito fácil de organizar suas finanças e economizar!`}
+          content={`${title} | AD Madureira Regional de Balsas!`}
         />
       </Head>
     </Center>

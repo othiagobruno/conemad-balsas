@@ -1,230 +1,109 @@
-import { FooterComponent } from '@/components/Footer'
 import HeaderComponent from '@/components/Header'
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  Text,
-  Image,
-  Stack,
-  keyframes,
-} from '@chakra-ui/react'
+import { Box, Button, Stack, Text } from '@chakra-ui/react'
+import React from 'react'
 
-import { IoLogoGooglePlaystore, IoLogoApple } from 'react-icons/io5'
-import Typewriter from 'typewriter-effect'
-
-const animationKeyframes = keyframes`
-  0% { transform: scale(0.98)  }
-  50% { transform: scale(1)  }
-  100% { transform: scale(0.98)  }
-`
-
-const animation = `${animationKeyframes} 3s ease-in-out infinite`
-
-export default function Home() {
-  const imageCard = {
-    mobile: '/images/mockup-04.png',
-    web: '/images/mockup-02.png',
-  }
-
+const Home: React.FC = () => {
   return (
-    <Box>
-      <HeaderComponent title="Despezzas" />
+    <Box h="100vh" bg="background" overflowY="auto" color="text.primary">
+      <HeaderComponent title="CONEMAD" />
 
-      <Center>
-        <Stack
-          direction={['column-reverse', 'row']}
-          maxW="1200px"
-          flex="1"
-          p={['20px', '50px 50px 0px']}
-          alignItems="start"
+      <Box
+        bgImage="url('/images/bg.jpeg')"
+        bgPos="top"
+        bgRepeat="no-repeat"
+        bgSize="cover"
+      >
+        <Box
+          backdropFilter="blur(8px)"
+          h="400px"
+          textAlign="center"
+          display="flex"
+          flexDir="column"
+          justifyContent="center"
+          fontWeight="bold"
+          color="white"
+          bg="rgba(0,0,0, 0.3)"
+          zIndex={-1}
         >
-          <Box flex={1} pt={[0, '100px']} zIndex={100}>
-            <Box fontWeight="800" fontSize="40px" minH={['300px', '200px']}>
-              <Text bg="primary.500" as="span" color="white" px="10px">
-                Despezzas
-              </Text>
+          <Box>
+            <Text fontSize={['18px', '25px']}>CONEMAD MA - 25º AGO 2023</Text>
+            <Text fontSize="50px">20 A 22 DE OUTUBRO</Text>
+            <Text fontWeight="25px">BALSAS - MARANHÃO</Text>
 
-              <Typewriter
-                options={{
-                  strings: [
-                    ' O jeito fácil de organizar suas finanças e economizar!',
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  delay: 45,
-                }}
-              />
-            </Box>
-            <Text pt="10px">
-              Simplifique sua vida financeira com Despezzas - Faça o download
-              agora e comece a economizar!
-            </Text>
-
-            <Stack pt="40px" direction={['column', 'row']}>
-              <Button
-                onClick={() => {
-                  window.open(
-                    'https://play.google.com/store/apps/details?id=com.despezzas'
-                  )
-                }}
-                leftIcon={<IoLogoGooglePlaystore size={20} />}
-                bg="black"
-                w={['100%', 'auto']}
-              >
-                PlayStore
-              </Button>
-              <Button
-                onClick={() => {
-                  window.open(
-                    'https://play.google.com/store/apps/details?id=com.despezzas'
-                  )
-                }}
-                w={['100%', 'auto']}
-                leftIcon={<IoLogoApple size={20} />}
-                bg="black"
-              >
-                Apple Store
-              </Button>
-            </Stack>
+            <Button mt="30px" px="60px">
+              Fazer minha inscrição
+            </Button>
           </Box>
-
-          <Box
-            display={['none', 'block']}
-            flex={1}
-            pl={[0, '80px']}
-            mr={[0, '-80px !important']}
+        </Box>
+      </Box>
+      <Box
+        display="flex"
+        flexDir="column"
+        justifyContent="center"
+        position="relative"
+        zIndex={100}
+        bgImage="url('/images/bg.svg')"
+        bgPos="top"
+        bgRepeat="no-repeat"
+        bgSize="cover"
+        h="40%"
+        m={['-40px', '-80px']}
+        alignItems="center"
+      >
+        <Box color="white" textAlign="center">
+          <Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize={['20px', '30px']}
           >
-            <Image
-              animation={animation}
-              alt=""
-              src={imageCard.web}
-              objectFit={'contain'}
-            />
-          </Box>
-
-          <Box display={['block', 'none']} flex={1} mb="-50px !important">
-            <Image
-              animation={animation}
-              alt=""
-              src={imageCard.mobile}
-              objectFit={'contain'}
-            />
-          </Box>
-        </Stack>
-      </Center>
-
-      <Center mt={['-170px', '-180px']}>
-        <Stack
-          align="center"
-          direction={['column', 'row']}
-          maxW="1200px"
-          flex="1"
-          p={['20px', '0px']}
-        >
-          <Box flex={1.5} pl="10px">
-            <Image
-              animation={animation}
-              alt=""
-              src="/images/mockup-03.png"
-              height="900px"
-              objectFit={'contain'}
-              ml={[0, '-80px']}
-            />
-          </Box>
-
-          <Box
-            textAlign={['center', 'start']}
-            flex={1}
-            pt="0"
-            mt={['-300px !important', '50px !important']}
-          >
-            <Text fontWeight="800" fontSize="40px">
-              Tenha Notícias do Mundo Financeiro
-            </Text>
-            <Text pt="10px">
-              Ter acesso às notícias financeiras é fundamental para se manter
-              informado sobre o mercado financeiro e tomar decisões financeiras
-              mais informadas e estratégicas
-              <br /> <br />
-              Ficar informado pode ajudá-lo a otimizar seus investimentos,
-              gerenciar riscos e aproveitar oportunidades financeiras.
-            </Text>
-
-            <HStack display={['none', 'block']} pt="40px" pb="120px">
-              <Button px="50px">baixe agora</Button>
-            </HStack>
-          </Box>
-        </Stack>
-      </Center>
-
-      <Center mt={[20, '-80px']}>
-        <Stack maxW="1200px" flex="1">
-          <Text textAlign="center" fontWeight="800" fontSize="40px">
-            Por que usar o Despezzas?
+            unidade, hierarquia e disciplina
           </Text>
+          <Text opacity="0.6">Nação Madureira, aqui crescemos juntos!</Text>
+        </Box>
+      </Box>
 
-          <Stack
-            direction={['column', 'row']}
-            justify="space-between"
-            py="50px"
-            spacing={['20px', '100px']}
-            px={['20px', '0px']}
-          >
-            <Stack w={['auto', '100px']} flex={1} textAlign="center">
-              <Image
-                alt=""
-                src="/icons/check.svg"
-                height="40px"
-                objectFit={'contain'}
-              />
-              <Text pt="20px" fontWeight="800">
-                Total controle de suas finanças
-              </Text>
-              <Text pt="10px">
-                Tenha controle total de suas finanças pessoais e domésticas.
-                Relatorios detalhados e gráficos para você entender melhor seus
-                gastos.
-              </Text>
-            </Stack>
+      <Stack
+        px={['40px', '150px']}
+        pt={['60px', '150px']}
+        spacing={[0, '50px']}
+        direction={['column', 'row']}
+      >
+        <Box flex={1} pt={[0, '30px']} pb={['30px', 0]}>
+          <Text fontSize="32px" fontWeight="bold">
+            AD Madureira Balsas
+          </Text>
+          <Box py="16px">
+            <Text fontWeight="bold" fontSize="20px">
+              Rua Dr. José Coelho Noleto, N10
+            </Text>
+            <Text fontWeight="bold" fontSize="20px">
+              Potosi, Balsas, MA
+            </Text>
+          </Box>
+          <Text opacity={0.5}>Ao lado da camara de vereadores</Text>
+        </Box>
 
-            <Stack w={['auto', '100px']} flex={1} textAlign="center">
-              <Image
-                alt=""
-                src="/icons/check.svg"
-                height="40px"
-                objectFit={'contain'}
-              />
-              <Text pt="20px" fontWeight="800">
-                Priorizamos sua segurança e privacidade
-              </Text>
-              <Text pt="10px">
-                Sua privacidade é muito importante para nós. Nós nunca
-                compartilhamos seus dados com terceiros.
-              </Text>
-            </Stack>
+        <Box flex={1.4}>
+          <Box
+            display="flex"
+            as="iframe"
+            src={
+              'https://www.google.com/maps?q=Assembleia de Deus Ministerio de Madureira, Rua Dr. José Coelho Noleto, Balsas MA&key=AIzaSyAAJhGjHZCo6MpU3EnmgYkSqFaYVXdsQBM&output=embed'
+            }
+            w="full"
+            h="400px"
+            loading="lazy"
+          />
+        </Box>
+      </Stack>
 
-            <Stack w={['auto', '100px']} flex={1} textAlign="center">
-              <Image
-                alt=""
-                src="/icons/check.svg"
-                height="40px"
-                objectFit={'contain'}
-              />
-              <Text pt="20px" fontWeight="800">
-                Ajudamos você a alcançar sua independência financeira
-              </Text>
-              <Text pt="10px">
-                Você pode acompanhar seus gastos e economizar dinheiro para
-                alcançar sua independência financeira.
-              </Text>
-            </Stack>
-          </Stack>
-        </Stack>
-      </Center>
-
-      <FooterComponent />
+      <Box px={[2, '150px']} py="100px">
+        <Text fontSize="32px" fontWeight="bold">
+          Hoteis por perto
+        </Text>
+      </Box>
     </Box>
   )
 }
+
+export default Home
