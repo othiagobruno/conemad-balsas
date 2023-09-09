@@ -18,10 +18,6 @@ export default function Document() {
         <meta property="og:description" content="CONEMAD MA" />
         <meta property="og:image" content="https://CONEMAD MA.com/og.png" />
         <meta name="theme-color" content="#000000" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
       </Head>
       <body>
         <Main />

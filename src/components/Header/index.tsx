@@ -20,13 +20,19 @@ const HeaderComponent: React.FC<Props> = ({ title }) => {
         shadow="md"
         justify="space-between"
       >
-        <Image src="/logo.svg" w={['100px', '130px']} />
+        <Image onClick={() => push('/')} src="/logo.svg" />
 
         <HStack>
           <Button display={['none', 'block']} variant="text">
             Contato
           </Button>
-          <Button borderRadius="40px" p="10px 40px">
+          <Button
+            onClick={() => {
+              push('/cadastro')
+            }}
+            borderRadius="40px"
+            p="10px 40px"
+          >
             Inscrição
           </Button>
         </HStack>
