@@ -19,7 +19,7 @@ const Home: React.FC = () => {
       >
         <Box
           backdropFilter="blur(8px)"
-          h="400px"
+          h="550px"
           textAlign="center"
           display="flex"
           flexDir="column"
@@ -46,7 +46,8 @@ const Home: React.FC = () => {
           </Box>
         </Box>
       </Box>
-      <Box w="full" bg="primary.500" py="50px">
+
+      <Box w="full" bg="primary.500" py="30px">
         <Box color="white" textAlign="center">
           <Text
             fontWeight="bold"
