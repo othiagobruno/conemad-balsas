@@ -8,20 +8,19 @@ datasource db {
 }
 
 model Subscriptions {
-  id              String  @id @default(uuid())
-  name            String
-  telefone        String?
-  cpf             String
-  rua             String?
-  numero          String?
-  bairro          String?
-  cidade          String
-  estado          String
-  cep             String
-  cargo           String?
-  cargoPretendido String
-  pixCode         String?
-  pago            Boolean @default(false)
+  id               String @id @default(uuid())
+  nome             String
+  telefone         String
+  cpf              String
+  cep              String
+  endereco         String
+  cidade           String
+  estado           String
+  cargo_atual      String
+  cargo_pretendido String
+
+  pixCode String?
+  pago    Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
