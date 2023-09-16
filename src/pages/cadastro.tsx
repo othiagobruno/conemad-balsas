@@ -39,13 +39,12 @@ const Cadastro: React.FC = () => {
     const cep = data.cep.replace(/\D/g, '')
     const { city, state } = await getByCep(cep)
 
-    const response = await createSub({
+    await createSub({
       ...data,
       cidade: city,
       estado: state,
       valor: price,
     })
-    console.log(response)
   }
 
   return (
@@ -63,6 +62,14 @@ const Cadastro: React.FC = () => {
             px={['20px', '150px']}
           >
             <Box flex={1} bg="white" shadow="lg" borderRadius="8px" p="30px">
+              <Box bg="red.600" p="20px" borderRadius="5px" mb="20px">
+                <Text fontSize="14px" color="white" fontWeight="bold">
+                  ⚠️ Ao iniciar a sua inscrição, esteja ciente que o seu CPF só
+                  poderá ser cadastrado apenas uma vez, revise seus dados com
+                  atenção e não avance se não for finalizar a inscrição.
+                </Text>
+              </Box>
+
               <Text fontSize="20px" fontWeight="bold" pb="30px">
                 Cadastro CONEMAD
               </Text>

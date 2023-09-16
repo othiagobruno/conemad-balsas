@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 const api = axios.create({
   baseURL: 'http://localhost:3000/api',
@@ -8,17 +9,26 @@ const api = axios.create({
   },
 })
 
-// GET https://gerarqrcodepix.com.br/api/v1
-// params: {
-//     nome: 'Ad Madureira Balsas',
-//     cidade: 'Balsas',
-//     valor: valor,
-//     saida: 'br',
-//     chave: '62120711364',
-//   },
-
 export const useSubscription = () => {
   const { push } = useRouter()
+  const [pix, setPix] = useState('')
+
+  const generatePix = async (valor: number) => {
+    try {
+      const res = await api.get('https://gerarqrcodepix.com.br/api/v1', {
+        params: {
+          nome: 'CONEMAD - MA',
+          cidade: 'Balsas',
+          valor: valor,
+          saida: 'br',
+          chave: '07815192000133',
+        },
+      })
+      setPix(res.data?.brcode)
+    } catch (error) {
+      //
+    }
+  }
 
   const createSub = async (data: ICreateSub) => {
     const res = await api.post('/cadastro', data)
@@ -32,11 +42,14 @@ export const useSubscription = () => {
   }
 
   return {
+    generatePix,
     createSub,
+    pix,
   }
 }
 
 export interface ICreateSub {
+  id?: string
   nome: string
   telefone: string
   cpf: string
