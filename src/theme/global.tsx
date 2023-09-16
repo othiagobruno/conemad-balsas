@@ -1,5 +1,6 @@
 import { GlobalStyles } from '@chakra-ui/theme-tools'
 import { Poppins } from 'next/font/google'
+import { Global } from '@emotion/react'
 
 export const fontLoad = Poppins({
   subsets: ['latin'],
@@ -25,3 +26,17 @@ export const global: GlobalStyles = {
     },
   },
 }
+
+export const FocusVisibleProvider = () => (
+  <Global
+    styles={`
+        *:focus {
+            box-shadow: none !important;
+        }
+    
+        *[data-focus] {
+            box-shadow: none !important;
+        }
+    `}
+  />
+)
