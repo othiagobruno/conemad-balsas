@@ -6,7 +6,7 @@ import { Box, Button, Center, Image, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
-export const CHAVE_PIX = '07815192000133'
+export const CHAVE_PIX = '07815192000133' // PIX CONEMAD
 
 const SuccessPage: React.FC = () => {
   const { query } = useRouter()

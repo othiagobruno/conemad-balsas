@@ -76,6 +76,8 @@ const SelectComponent: React.FC<Props> = ({
 
       <InputGroup>
         <Select
+          errorBorderColor="red.400"
+          isInvalid={!!error}
           defaultValue={value}
           variant={variant}
           {...register(name)}

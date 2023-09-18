@@ -7,9 +7,25 @@ import { toPrice } from '@/utils/price'
 import { Box, Button, HStack, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  cargo_atual: yup.string().required('Campo obrigatório'),
+  cargo_pretendido: yup.string().required('Campo obrigatório'),
+  nome: yup.string().required('Campo obrigatório'),
+  cpf: yup.string().required('Campo obrigatório'),
+  telefone: yup.string().required('Campo obrigatório'),
+  cep: yup.string().required('Campo obrigatório'),
+  endereco: yup.string().required('Campo obrigatório'),
+  campo: yup.string().required('Campo obrigatório'),
+  regional: yup.string().required('Campo obrigatório'),
+  pastor: yup.string().required('Campo obrigatório'),
+})
 
 const Cadastro: React.FC = () => {
   const formMethods = useForm<ICreateSub>({
+    resolver: yupResolver(schema) as any,
     defaultValues: {
       cargo_atual: 'membro',
       cargo_pretendido: 'não',

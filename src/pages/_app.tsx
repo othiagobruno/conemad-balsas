@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, LightMode } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js'
 import { themeApp } from '@/theme'
 import Head from 'next/head'
@@ -14,7 +14,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
 
         <FocusVisibleProvider />
-        <Component {...pageProps} />
+        <LightMode>
+          <Component {...pageProps} />
+        </LightMode>
       </ChakraProvider>
     </CacheProvider>
   )
