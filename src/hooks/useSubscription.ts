@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://conemad-balsas.vercel.app/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -15,15 +15,7 @@ export const useSubscription = () => {
 
   const generatePix = async (valor: number) => {
     try {
-      const res = await api.get('https://gerarqrcodepix.com.br/api/v1', {
-        params: {
-          nome: 'CONEMAD - MA',
-          cidade: 'Balsas',
-          valor: valor,
-          saida: 'br',
-          chave: '07815192000133',
-        },
-      })
+      const res = await api.get('pix', { params: { valor: valor } })
       setPix(res.data?.brcode)
     } catch (error) {
       //

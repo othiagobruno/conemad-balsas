@@ -9,37 +9,44 @@ export const viaCepApi = axios.create({
 })
 
 export const useCep = () => {
+  //
+
+  //
   const getByCep = async (cep: string) => {
-    const formattedCep = String(cep).replace('-', '')
+    try {
+      const formattedCep = String(cep).replace('-', '')
 
-    const viaCep = await findViaCep(formattedCep)
-    if (viaCep?.cep) {
-      return {
-        address: viaCep.logradouro,
-        city: viaCep.localidade,
-        district: viaCep.bairro,
-        state: viaCep.uf,
-        code: viaCep.cep,
-        ok: true,
-        status: 200,
-        statusText: 'OK',
-      } as ICepResult
-    }
+      const viaCep = await findViaCep(formattedCep)
+      if (viaCep?.cep) {
+        return {
+          address: viaCep.logradouro,
+          city: viaCep.localidade,
+          district: viaCep.bairro,
+          state: viaCep.uf,
+          code: viaCep.cep,
+          ok: true,
+          status: 200,
+          statusText: 'OK',
+        } as ICepResult
+      }
 
-    const apiCepValeu = await apiGetCep(formattedCep)
-    if (apiCepValeu?.code) {
-      return {
-        address: apiCepValeu.address,
-        city: apiCepValeu.city,
-        district: apiCepValeu.district,
-        state: apiCepValeu.state,
-        code: apiCepValeu.code,
-        ok: true,
-        status: 200,
-        statusText: 'OK',
-      } as ICepResult
+      const apiCepValeu = await apiGetCep(formattedCep)
+      if (apiCepValeu?.code) {
+        return {
+          address: apiCepValeu.address,
+          city: apiCepValeu.city,
+          district: apiCepValeu.district,
+          state: apiCepValeu.state,
+          code: apiCepValeu.code,
+          ok: true,
+          status: 200,
+          statusText: 'OK',
+        } as ICepResult
+      }
+      return null
+    } catch (error) {
+      //
     }
-    return null
   }
 
   const findViaCep = async (cep: string) => {

@@ -37,6 +37,7 @@ const Cadastro: React.FC = () => {
     },
   })
   const cargo_pretendido = formMethods.watch('cargo_pretendido') || 'não'
+  const cargo_atual = formMethods.watch('cargo_atual') || 'não'
 
   const { createSub } = useSubscription()
 
@@ -44,7 +45,13 @@ const Cadastro: React.FC = () => {
     evangelista: 910,
     missionario: 910,
     pastor: 560,
-    não: 130,
+    não:
+      {
+        evangelista: 260,
+        pastor: 260,
+        missionario: 260,
+        membro: 130,
+      }[cargo_atual ?? 'membro'] ?? 130,
   }[cargo_pretendido]
 
   const price = priceByCargoPretendido

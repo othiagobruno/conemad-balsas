@@ -1,8 +1,9 @@
 import HeaderComponent from '@/components/Header'
 import { ICreateSub, useSubscription } from '@/hooks/useSubscription'
+import { copyToClipboard } from '@/utils/copy'
 import { toPrice } from '@/utils/price'
 import { sendToWhatsapp } from '@/utils/senToWhatspp'
-import { Box, Button, Center, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Image, Text, useToast } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
@@ -13,6 +14,8 @@ const SuccessPage: React.FC = () => {
   const dados = query as any as ICreateSub
   const firstName = dados?.nome?.split(' ')?.[0]
   const { generatePix, pix } = useSubscription()
+
+  const toast = useToast()
 
   useEffect(() => {
     if (!dados.valor) return
@@ -71,7 +74,28 @@ const SuccessPage: React.FC = () => {
             <Image src={`${pixChave}&saida=qr`} />
           </Center>
 
-          <Box p="14px" bg="gray.200" borderRadius="5px" fontWeight="bold">
+          <Text fontWeight="bold" fontSize="16px" pb="10px">
+            Clique para copiar a Chave PIX
+          </Text>
+          <Box
+            cursor="pointer"
+            userSelect={'none'}
+            onClick={() => {
+              copyToClipboard(pix)
+              toast({
+                title: 'Chave PIX copiada',
+                description:
+                  'A chave PIX foi copiada para sua area de transferência',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              })
+            }}
+            p="14px"
+            bg="gray.200"
+            borderRadius="5px"
+            fontWeight="bold"
+          >
             {pix}
           </Box>
 
