@@ -12,7 +12,6 @@ import * as yup from 'yup'
 
 const schema = yup.object().shape({
   cargo_atual: yup.string().required('Campo obrigatório'),
-  cargo_pretendido: yup.string().required('Campo obrigatório'),
   nome: yup.string().required('Campo obrigatório'),
   cpf: yup.string().required('Campo obrigatório'),
   telefone: yup.string().required('Campo obrigatório'),
@@ -28,7 +27,6 @@ const Cadastro: React.FC = () => {
     resolver: yupResolver(schema) as any,
     defaultValues: {
       cargo_atual: 'membro',
-      cargo_pretendido: 'não',
       nome: '',
       cpf: '',
       telefone: '',
@@ -36,25 +34,18 @@ const Cadastro: React.FC = () => {
       endereco: '',
     },
   })
-  const cargo_pretendido = formMethods.watch('cargo_pretendido') || 'não'
+
   const cargo_atual = formMethods.watch('cargo_atual') || 'não'
 
-  const { createSub } = useSubscription()
+  const { createSub, loading } = useSubscription()
 
-  const priceByCargoPretendido = {
-    evangelista: 910,
-    missionario: 910,
-    pastor: 560,
-    não:
-      {
-        evangelista: 260,
-        pastor: 260,
-        missionario: 260,
-        membro: 130,
-      }[cargo_atual ?? 'membro'] ?? 130,
-  }[cargo_pretendido]
-
-  const price = priceByCargoPretendido
+  const price =
+    {
+      evangelista: 260,
+      pastor: 260,
+      missionario: 260,
+      membro: 130,
+    }[cargo_atual ?? 'membro'] ?? 130
 
   const { getByCep } = useCep()
 
@@ -138,30 +129,6 @@ const Cadastro: React.FC = () => {
                   ]}
                 />
 
-                <SelectComponent
-                  name="cargo_pretendido"
-                  label="Vou ser consagrado(a)"
-                  placeholder="Selecione um cargo"
-                  options={[
-                    {
-                      name: 'Não vou ser consagrado(a)',
-                      value: 'não',
-                    },
-                    {
-                      name: 'Pastor',
-                      value: 'pastor',
-                    },
-                    {
-                      name: 'Evangelista',
-                      value: 'evangelista',
-                    },
-                    {
-                      name: 'Missionário',
-                      value: 'missionario',
-                    },
-                  ]}
-                />
-
                 <InputComponent
                   name="nome"
                   placeholder="Seu nome completo"
@@ -207,14 +174,14 @@ const Cadastro: React.FC = () => {
                   <InputComponent
                     name="campo"
                     placeholder="Campo"
-                    label="Qual o nome do Campo?"
+                    label="Qual o Campo?"
                     flex={1}
                   />
 
                   <InputComponent
                     name="regional"
                     placeholder="Regional"
-                    label="Qual o nome da Regional?"
+                    label="Qual a Regional?"
                     flex={1}
                   />
                 </Stack>
@@ -245,18 +212,13 @@ const Cadastro: React.FC = () => {
                     {formMethods.watch('cargo_atual')}
                   </Text>
                 </HStack>
-                <HStack justify="space-between" pb="30px">
-                  <Text>Vou ser consagrado</Text>
-                  <Text fontWeight="bold" textTransform="capitalize">
-                    {cargo_pretendido}
-                  </Text>
-                </HStack>
+
                 <HStack justify="space-between" pb="30px">
                   <Text>Total</Text>
                   <Text fontWeight="bold">{toPrice(price)}</Text>
                 </HStack>
 
-                <Button type="submit" w="full">
+                <Button isLoading={loading} type="submit" w="full">
                   Finalizar Inscrição
                 </Button>
               </Box>

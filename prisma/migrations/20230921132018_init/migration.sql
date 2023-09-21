@@ -9,7 +9,6 @@ CREATE TABLE "Subscriptions" (
     "cidade" TEXT NOT NULL,
     "estado" TEXT NOT NULL,
     "cargo_atual" TEXT NOT NULL,
-    "cargo_pretendido" TEXT NOT NULL,
     "valor" INTEGER NOT NULL,
     "campo" TEXT,
     "regional" TEXT,

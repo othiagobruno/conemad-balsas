@@ -7,7 +7,6 @@ export class CreateSubsDTO {
   cidade: string
   estado: string
   cargo_atual: string
-  cargo_pretendido: string
   valor: number
   campo: string
   regional: string

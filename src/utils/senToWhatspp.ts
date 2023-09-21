@@ -1,18 +1,15 @@
 import { toPrice } from './price'
 
 export const sendToWhatsapp = (dados: any) => {
-  const url = `https://api.whatsapp.com/send?phone=559885115648text=${encodeURIComponent(`
+  const url = `https://api.whatsapp.com/send?phone=559888953707&text=${encodeURIComponent(`
 Olá, a paz do Senhor Jesus! Eu sou ${
     dados.nome
-  }! Acabei de fazer o pagamento da minha inscrição/consagração no valor de ${toPrice(
+  }! Acabei de fazer o pagamento da minha inscrição no valor de ${toPrice(
     dados.valor
   )} e queria confirmar se está tudo certo.
 
 ID de inscrição: *${dados.id}*
 Cargo Atual: *${dados.cargo_atual}*
-Consagração: *${
-    dados.cargo_pretendido !== 'não' ? dados.cargo_pretendido : 'Não'
-  }*
 Valor: *${toPrice(dados.valor)}*
 Telefone: *${dados.telefone}*
 CPF: *${dados.cpf}*
