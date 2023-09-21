@@ -3,7 +3,10 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const api = axios.create({
-  baseURL: 'https://conemad-balsas.vercel.app/api',
+  baseURL: {
+    production: 'https://conemad-balsas.vercel.app/api',
+    development: 'http://localhost:3000/api',
+  }[(process.env.NODE_ENV as 'production') ?? 'production'],
   headers: {
     'Content-Type': 'application/json',
   },

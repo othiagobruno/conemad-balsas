@@ -54,23 +54,25 @@ const ConfirmarPage: React.FC = () => {
     <Box>
       <HeaderComponent title="Obrigado por se inscrever" />
 
-      <Flex h="full" py="50px" flexDir="column" align="center">
-        <Box>
+      <Flex h="full" py="30px" flexDir="column" align="center">
+        <Flex flex={1} flexDir="column">
           <Flex
             id="print"
             backgroundColor="white"
-            w={['auto', '600px']}
+            w={['350px', '449px']}
+            h={['410px', '400px']}
             shadow="lg"
             bgImage="url('/bg.png')"
             bgPos="top"
             bgRepeat="no-repeat"
-            bgSize="cover"
+            bgSize={['cover', 'contain']}
           >
             <Flex
               p="40px 30px"
               pb="10px"
               flexDir="column"
               align="center"
+              justify="center"
               flex={1}
             >
               <Text opacity={0.5}>CONFIRMAÇÃO DE INSCRIÇÃO</Text>
@@ -78,12 +80,14 @@ const ConfirmarPage: React.FC = () => {
                 py="20px"
                 fontWeight="bold"
                 textTransform="uppercase"
-                fontSize="26px"
+                fontSize={['20px', '26px']}
+                noOfLines={2}
+                textAlign="center"
               >
                 {data?.nome}
               </Text>
 
-              <Text fontWeight="bold" fontSize="14px">
+              <Text textAlign="center" fontWeight="bold" fontSize="14px">
                 CONEMAD MA - 25º AGO 2023 - BALSAS - MARANHÃO
               </Text>
 
@@ -93,10 +97,10 @@ const ConfirmarPage: React.FC = () => {
               </HStack>
             </Flex>
           </Flex>
-        </Box>
+        </Flex>
 
         <Button onClick={downloadImage} mt="30px">
-          Enviar Comprovante de Inscrição
+          Baixar Comprovante
         </Button>
       </Flex>
     </Box>
