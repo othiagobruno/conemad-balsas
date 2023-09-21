@@ -39,11 +39,21 @@ export const useSubscription = () => {
     }
   }
 
+  const getConfirm = async (id: string) => {
+    try {
+      const res = await api.get('/confirmar', { params: { id: id } })
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
     generatePix,
     createSub,
     pix,
     loading,
+    getConfirm,
   }
 }
 

@@ -95,7 +95,7 @@ const Cadastro: React.FC = () => {
                   placeholder="Selecione um cargo"
                   options={[
                     {
-                      name: 'Pastor',
+                      name: 'Pastor(a)',
                       value: 'pastor',
                     },
                     {
@@ -103,15 +103,15 @@ const Cadastro: React.FC = () => {
                       value: 'evangelista',
                     },
                     {
-                      name: 'Missionário',
+                      name: 'Missionário(a)',
                       value: 'missionario',
                     },
                     {
-                      name: 'Presbítero',
+                      name: 'Presbítero(a)',
                       value: 'presbitero',
                     },
                     {
-                      name: 'Diácono',
+                      name: 'Diácono / Diaconiza',
                       value: 'diacono',
                     },
                     {
@@ -119,11 +119,11 @@ const Cadastro: React.FC = () => {
                       value: 'auxiliar',
                     },
                     {
-                      name: 'Obreiro',
+                      name: 'Obreiro(a)',
                       value: 'obreiro',
                     },
                     {
-                      name: 'Membro',
+                      name: 'Membro(a)',
                       value: 'membro',
                     },
                   ]}
