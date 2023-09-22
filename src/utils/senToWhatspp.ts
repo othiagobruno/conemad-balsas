@@ -44,17 +44,17 @@ Olá, a paz do Senhor Jesus! Eu sou ${
   )} e queria confirmar se está tudo certo.
 
 ID de inscrição: *${dados.id}*
-Cargo Atual: *${cargo.find((a) => a.value === dados.cargo_atual)?.name}*
+Cargo Atual: *${cargo.find((a) => a.value === dados.cargo_atual)?.name.trim()}*
 Valor: *${toPrice(dados.valor)}*
-Telefone: *${dados.telefone}*
-CPF: *${dados.cpf}*
-Campo: *${dados.campo}*
-Regional: *${dados.regional}*
-Pastor: *${dados.pastor}*
+Telefone: *${dados.telefone.trim()}*
+CPF: *${dados.cpf.trim()}*
+Campo: *${dados.campo.trim()}*
+Regional: *${dados.regional?.trim()}*
+Pastor: *${dados.pastor.trim()}*
 Cidade: *${dados.cidade}*
 Estado: *${dados.estado}*
 CEP: *${dados.cep}*
-Endereço: *${dados.endereco}*
+Endereço: *${dados.endereco.trim()}*
 `)}`
 
   window.open(url, '_blank')
