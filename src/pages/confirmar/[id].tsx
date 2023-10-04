@@ -88,7 +88,7 @@ const ConfirmarPage: React.FC = () => {
               </Text>
 
               <Text textAlign="center" fontWeight="bold" fontSize="14px">
-                CONEMAD MA - 25º AGO 2023 - BALSAS - MARANHÃO
+                CONEMAD MA - 24º AGO 2023 - BALSAS - MARANHÃO
               </Text>
 
               <HStack pt="30px">

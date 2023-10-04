@@ -30,7 +30,7 @@ const Home: React.FC = () => {
           zIndex={-1}
         >
           <Box>
-            <Text fontSize={['18px', '25px']}>CONEMAD MA - 25º AGO 2023</Text>
+            <Text fontSize={['18px', '25px']}>CONEMAD MA - 24º AGO 2023</Text>
             <Text fontSize="50px">20 A 22 DE OUTUBRO</Text>
             <Text fontWeight="25px">BALSAS - MARANHÃO</Text>
 
