@@ -7,11 +7,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const id = req.query.id as string
 
-    await prisma.subscriptions.update({
-      where: { id },
-      data: { pago: true },
-    })
-
     const sub = await prisma.subscriptions.findFirst({
       where: {
         id: id,

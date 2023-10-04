@@ -3,7 +3,15 @@ import { ICreateSub, useSubscription } from '@/hooks/useSubscription'
 import { copyToClipboard } from '@/utils/copy'
 import { toPrice } from '@/utils/price'
 import { sendToWhatsapp } from '@/utils/senToWhatspp'
-import { Box, Button, Center, Image, Text, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  Image,
+  Spinner,
+  Text,
+  useToast,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
@@ -11,11 +19,20 @@ export const CHAVE_PIX = '07815192000133' // PIX CONEMAD
 
 const SuccessPage: React.FC = () => {
   const { query } = useRouter()
-  const dados = query as any as ICreateSub
+  const dadosQuery = query as any as ICreateSub
+
+  const [dados, setDados] = React.useState<ICreateSub>(dadosQuery)
+
   const firstName = dados?.nome?.split(' ')?.[0]
-  const { generatePix, pix } = useSubscription()
+  const { generatePix, pix, getDados } = useSubscription()
 
   const toast = useToast()
+
+  useEffect(() => {
+    if (dadosQuery.id) {
+      getDados(dadosQuery.id).then((res) => setDados(res))
+    }
+  }, [dadosQuery.id])
 
   useEffect(() => {
     if (!dados.valor) return
@@ -27,6 +44,14 @@ const SuccessPage: React.FC = () => {
   }
 
   const pixChave = `https://gerarqrcodepix.com.br/api/v1?nome=${firstName}&cidade=${dados.cidade}&valor=${dados.valor}&chave=${CHAVE_PIX}`
+
+  if (!dados?.nome) {
+    return (
+      <Center h="100vh" w="100vw">
+        <Spinner />
+      </Center>
+    )
+  }
 
   return (
     <Box>

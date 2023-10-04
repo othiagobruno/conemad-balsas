@@ -51,7 +51,17 @@ export const useSubscription = () => {
     }
   }
 
+  const getDados = async (id: string) => {
+    try {
+      const res = await api.get('/dados', { params: { id: id } })
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
+    getDados,
     generatePix,
     createSub,
     pix,
