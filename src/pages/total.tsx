@@ -1,6 +1,6 @@
 import HeaderComponent from '@/components/Header'
 import { api } from '@/hooks/useSubscription'
-import { Box, Center, HStack, Input, Text } from '@chakra-ui/react'
+import { Box, Center, HStack, Input, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 const SENHA = 'madureira10'
@@ -41,8 +41,8 @@ const Total: React.FC = () => {
     <Box bg="gray.200" h="100vh" overflowX="auto">
       <HeaderComponent title="Dashboard" />
       <Center>
-        <Box mt="50px" w="60%">
-          <HStack spacing="30px">
+        <Box px={['20px', 0]} mt={[5, '50px']} w={['full', '60%']}>
+          <Stack direction={['column', 'row']} spacing={[3, '30px']}>
             <Box flex={1} bg="white" p="30px" borderRadius="20px" shadow="lg">
               <Text
                 opacity={0.5}
@@ -70,9 +70,15 @@ const Total: React.FC = () => {
                 {dados?.total}
               </Text>
             </Box>
-          </HStack>
+          </Stack>
 
-          <HStack spacing="30px" align="start" pt="30px" pb="100px">
+          <Stack
+            direction={['column', 'row']}
+            spacing={[2, '30px']}
+            align="start"
+            pt={[3, '30px']}
+            pb="100px"
+          >
             <Box p="30px" bg="white" borderRadius="10px" shadow="lg" flex={1}>
               <Text fontSize="22px" fontWeight="bold" pb="20px">
                 Por cidade
@@ -106,7 +112,7 @@ const Total: React.FC = () => {
                 </HStack>
               ))}
             </Box>
-          </HStack>
+          </Stack>
         </Box>
       </Center>
     </Box>
