@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: {
     production: 'https://conemad-balsas.vercel.app/api',
     development: 'http://localhost:3000/api',
